@@ -1,5 +1,13 @@
 package com.chartapp.bottom;
 
+import android.annotation.SuppressLint;
+import android.content.Intent;
+import android.graphics.drawable.ColorDrawable;
+import android.os.Bundle;
+import android.util.Log;
+import android.view.MenuItem;
+import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
@@ -7,21 +15,18 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
-import android.annotation.SuppressLint;
-import android.content.Intent;
-import android.graphics.drawable.ColorDrawable;
-import android.os.Bundle;
-import android.view.MenuItem;
-import android.view.View;
-
+import com.chartapp.MainActivity;
 import com.chartapp.R;
-import com.chartapp.laptop.Laptop;
-import com.chartapp.mainboard.Mainboard;
-import com.chartapp.phones.Phone;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.firebase.messaging.FirebaseMessaging;
+
 
 public class Bottom extends AppCompatActivity  {
     Intent intent;
+    private static final String TAG = "MyActivity";
+
 
     @SuppressLint("ResourceAsColor")
     @Override
@@ -37,7 +42,10 @@ public class Bottom extends AppCompatActivity  {
         setSupportActionBar(toolbar);
         toolbar.setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.toolbar)));
         getWindow().setStatusBarColor(ContextCompat.getColor(this,R.color.toolbar));
+        fcm();
+
     }
+
 
     private BottomNavigationView.OnNavigationItemSelectedListener navListener = new BottomNavigationView.OnNavigationItemSelectedListener() {
         @Override
@@ -60,6 +68,21 @@ public class Bottom extends AppCompatActivity  {
             return true;
         }
     };
+
+public void fcm(){
+    FirebaseMessaging.getInstance().getToken()
+            .addOnCompleteListener(new OnCompleteListener<String>() {
+                @Override
+                public void onComplete(@NonNull Task<String> task) {
+                    if (!task.isSuccessful()) {
+                         Toast.makeText(getApplicationContext(), "Fetching FCM registration token failed",Toast.LENGTH_SHORT).show();
+                        return;
+                    }
+                    // Get new FCM registration token
+                    String token = task.getResult();
+                }
+            });
+}
 
 
 }
