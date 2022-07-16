@@ -9,23 +9,34 @@ import android.view.MenuItem;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
-import com.chartapp.MainActivity;
 import com.chartapp.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.messaging.FirebaseMessaging;
+import com.yandex.mobile.ads.banner.AdSize;
+import com.yandex.mobile.ads.banner.BannerAdEventListener;
+import com.yandex.mobile.ads.banner.BannerAdView;
+import com.yandex.mobile.ads.common.AdRequest;
+import com.yandex.mobile.ads.common.AdRequestError;
+import com.yandex.mobile.ads.common.ImpressionData;
+import com.yandex.mobile.ads.common.InitializationListener;
+import com.yandex.mobile.ads.common.MobileAds;
 
 
 public class Bottom extends AppCompatActivity  {
+    private static final String YANDEX_MOBILE_ADS_TAG = "YandexMobileAds";
     Intent intent;
     private static final String TAG = "MyActivity";
+    private BannerAdView mBannerAdView;
+    private BannerAdEventListener m;
 
 
     @SuppressLint("ResourceAsColor")
@@ -44,7 +55,59 @@ public class Bottom extends AppCompatActivity  {
         getWindow().setStatusBarColor(ContextCompat.getColor(this,R.color.toolbar));
         fcm();
 
+        MobileAds.initialize(this, new InitializationListener() {
+            @Override
+            public void onInitializationCompleted() {
+                Log.d(YANDEX_MOBILE_ADS_TAG, "SDK initialized");
+            }
+        });
+        mBannerAdView = (BannerAdView) findViewById(R.id.banner_ad_view);
+        mBannerAdView.setAdUnitId("R-M-1760873-1");
+        mBannerAdView.setAdSize(AdSize.stickySize(AdSize.BANNER_320x100.getWidth()));
+
+        ads();
     }
+
+    private void ads() {
+
+        final AdRequest adRequest = new AdRequest.Builder().build();
+        mBannerAdView.setBannerAdEventListener(new BannerAdEventListener() {
+            @Override
+            public void onAdLoaded() {
+
+            }
+
+            @Override
+            public void onAdFailedToLoad(AdRequestError adRequestError) {
+
+            }
+
+            @Override
+            public void onAdClicked() {
+
+            }
+
+            @Override
+            public void onLeftApplication() {
+
+            }
+
+            @Override
+            public void onReturnedToApplication() {
+
+            }
+
+            @Override
+            public void onImpression(@Nullable ImpressionData impressionData) {
+
+            }
+        });
+
+        // Загрузка объявления.
+        mBannerAdView.loadAd(adRequest);
+
+    }
+
 
 
     private BottomNavigationView.OnNavigationItemSelectedListener navListener = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -78,7 +141,6 @@ public void fcm(){
                          Toast.makeText(getApplicationContext(), "Fetching FCM registration token failed",Toast.LENGTH_SHORT).show();
                         return;
                     }
-                    // Get new FCM registration token
                     String token = task.getResult();
                 }
             });
