@@ -4,22 +4,43 @@ import android.content.Intent;
 import android.media.Image;
 import android.os.Bundle;
 
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import com.chartapp.R;
+import com.chartapp.Test;
 import com.chartapp.laptop.Laptop;
 import com.chartapp.mainboard.Mainboard;
 import com.chartapp.phones.Phone;
 import com.chartapp.power.Power;
 import com.chartapp.welding.Welding;
+import com.yandex.mobile.ads.banner.AdSize;
+import com.yandex.mobile.ads.banner.BannerAdEventListener;
+import com.yandex.mobile.ads.banner.BannerAdView;
+import com.yandex.mobile.ads.common.AdRequest;
+import com.yandex.mobile.ads.common.AdRequestError;
+import com.yandex.mobile.ads.common.ImpressionData;
+import com.yandex.mobile.ads.common.InitializationListener;
+import com.yandex.mobile.ads.common.MobileAds;
+
+import java.util.Objects;
 
 public class ChartFragment extends Fragment {
+    private static final String TAG = "MyActivity";
+
     Intent intent;
+    ImageView laptop;
+    ImageView mainboard;
+    ImageView phone;
+    ImageView welding;
+    ImageView power;
+
 
 
 
@@ -42,16 +63,27 @@ public class ChartFragment extends Fragment {
         // Inflate the layout for this fragment
         View view =  inflater.inflate(R.layout.fragment_chart, container, false);
         getActivity().setTitle("Каталог схем");
-        ImageView laptop = view.findViewById(R.id.notebookView);
-        ImageView mainboard = view.findViewById(R.id.mainboardView);
-        ImageView phone = view.findViewById(R.id.phoneView);
-        ImageView welding = view.findViewById(R.id.weldingView);
-        ImageView power = view.findViewById(R.id.powersupView);
+        laptop = view.findViewById(R.id.notebookView);
+        mainboard = view.findViewById(R.id.mainboardView);
+        phone = view.findViewById(R.id.phoneView);
+        welding = view.findViewById(R.id.weldingView);
+        power = view.findViewById(R.id.powersupView);
 
+
+        preload();
+
+        return view;
+
+
+
+
+    }
+
+    private void preload() {
         phone.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                intent = new Intent(getActivity(), Phone.class);
+                intent = new Intent(getActivity(), Test.class);
                 startActivity(intent);
             }
         });
@@ -86,9 +118,8 @@ public class ChartFragment extends Fragment {
             }
         });
 
-
-
-        return view;
     }
+
+
 
 }

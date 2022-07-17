@@ -32,11 +32,11 @@ import com.yandex.mobile.ads.common.MobileAds;
 
 
 public class Bottom extends AppCompatActivity  {
-    private static final String YANDEX_MOBILE_ADS_TAG = "YandexMobileAds";
+
     Intent intent;
     private static final String TAG = "MyActivity";
-    private BannerAdView mBannerAdView;
-    private BannerAdEventListener m;
+
+
 
 
     @SuppressLint("ResourceAsColor")
@@ -55,58 +55,11 @@ public class Bottom extends AppCompatActivity  {
         getWindow().setStatusBarColor(ContextCompat.getColor(this,R.color.toolbar));
         fcm();
 
-        MobileAds.initialize(this, new InitializationListener() {
-            @Override
-            public void onInitializationCompleted() {
-                Log.d(YANDEX_MOBILE_ADS_TAG, "SDK initialized");
-            }
-        });
-        mBannerAdView = (BannerAdView) findViewById(R.id.banner_ad_view);
-        mBannerAdView.setAdUnitId("R-M-1760873-1");
-        mBannerAdView.setAdSize(AdSize.stickySize(AdSize.BANNER_320x100.getWidth()));
 
-        ads();
-    }
-
-    private void ads() {
-
-        final AdRequest adRequest = new AdRequest.Builder().build();
-        mBannerAdView.setBannerAdEventListener(new BannerAdEventListener() {
-            @Override
-            public void onAdLoaded() {
-
-            }
-
-            @Override
-            public void onAdFailedToLoad(AdRequestError adRequestError) {
-
-            }
-
-            @Override
-            public void onAdClicked() {
-
-            }
-
-            @Override
-            public void onLeftApplication() {
-
-            }
-
-            @Override
-            public void onReturnedToApplication() {
-
-            }
-
-            @Override
-            public void onImpression(@Nullable ImpressionData impressionData) {
-
-            }
-        });
-
-        // Загрузка объявления.
-        mBannerAdView.loadAd(adRequest);
 
     }
+
+
 
 
 

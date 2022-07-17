@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.annotation.SuppressLint;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -18,17 +19,24 @@ import android.widget.SearchView;
 
 
 import com.chartapp.R;
+import com.yandex.mobile.ads.banner.AdSize;
+import com.yandex.mobile.ads.banner.BannerAdView;
+import com.yandex.mobile.ads.common.AdRequest;
+import com.yandex.mobile.ads.common.InitializationListener;
+import com.yandex.mobile.ads.common.MobileAds;
 
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 
 public class Phone extends AppCompatActivity  {
 
     private PhoneAdapter adapter;
     private List<PhoneData> exampleList;
+
 
 
     @SuppressLint("ResourceAsColor")
@@ -46,6 +54,7 @@ public class Phone extends AppCompatActivity  {
         setSupportActionBar(toolbar);
         toolbar.setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.toolbar)));
         getWindow().setStatusBarColor(ContextCompat.getColor(this,R.color.toolbar));
+
 
 
 
