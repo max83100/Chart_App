@@ -2,6 +2,7 @@ package com.chartapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.Log;
 
@@ -17,6 +18,9 @@ public class Test extends AppCompatActivity {
     BannerAdView mBannerAdView;
     private static final String YANDEX_MOBILE_ADS_TAG = "YandexMobileAds";
 
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,8 +35,11 @@ public class Test extends AppCompatActivity {
 
         mBannerAdView =  findViewById(R.id.banner_ad_view);
         mBannerAdView.setAdUnitId("R-M-1760873-1");
-        mBannerAdView.setAdSize(AdSize.FULL_SCREEN);
+        mBannerAdView.setAdSize(AdSize.BANNER_320x50);
         final AdRequest adRequest = new AdRequest.Builder().build();
+
         mBannerAdView.loadAd(adRequest);
     }
+
+
 }
