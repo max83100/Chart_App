@@ -5,13 +5,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 
-import com.airbnb.lottie.LottieAnimationView;
+
 import com.chartapp.bottom.Bottom;
-import com.chartapp.phones.Phone;
+
 
 
 public class Splash extends AppCompatActivity {
-    LottieAnimationView anim;
+
 
 
     @Override
