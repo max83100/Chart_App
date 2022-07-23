@@ -34,6 +34,13 @@
 
         </com.yandex.mobile.ads.banner.BannerAdView>
 
+        <com.yandex.mobile.ads.banner.BannerAdView
+            android:id="@+id/banner_ad_view3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        </com.yandex.mobile.ads.banner.BannerAdView>
+
     </LinearLayout>
 
 

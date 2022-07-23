@@ -21,6 +21,9 @@ public class Test extends AppCompatActivity {
     BannerAdView mBannerAdView;
     BannerAdView mBannerAdView1;
     BannerAdView mBannerAdView2;
+    BannerAdView mBannerAdView3;
+    BannerAdView mBannerAdView4;
+    BannerAdView mBannerAdView5;
     private static final String YANDEX_MOBILE_ADS_TAG = "YandexMobileAds";
 
 
@@ -55,6 +58,15 @@ public class Test extends AppCompatActivity {
         mBannerAdView2.setAdSize(AdSize.BANNER_300x300);
         mBannerAdView2.loadAd(adRequest);
 
+        mBannerAdView3 =  findViewById(R.id.banner_ad_view3);
+        mBannerAdView3.setAdUnitId("R-M-1760873-1");
+        mBannerAdView3.setAdSize(AdSize.BANNER_320x50);
+        mBannerAdView3.loadAd(adRequest);
+
+
+
+
+
 
 
         Thread logoTimer = new Thread()
@@ -64,10 +76,10 @@ public class Test extends AppCompatActivity {
                 try
                 {
                     int logoTimer = 0;
-                    while(logoTimer < 25000)
+                    while(logoTimer < 10000)
                     {
                         sleep(100);
-                        logoTimer = logoTimer +100;
+                        logoTimer = (int) (logoTimer + Math.random()*100);
                     };
 
 
