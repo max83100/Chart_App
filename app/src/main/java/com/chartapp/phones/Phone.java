@@ -36,6 +36,8 @@ public class Phone extends AppCompatActivity  {
 
     private PhoneAdapter adapter;
     private List<PhoneData> exampleList;
+    BannerAdView mBannerAdView;
+    private static final String YANDEX_MOBILE_ADS_TAG = "YandexMobileAds";
 
 
 
@@ -55,7 +57,18 @@ public class Phone extends AppCompatActivity  {
         toolbar.setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.toolbar)));
         getWindow().setStatusBarColor(ContextCompat.getColor(this,R.color.toolbar));
 
-
+//ads
+        MobileAds.initialize(this, new InitializationListener() {
+            @Override
+            public void onInitializationCompleted() {
+                Log.d(YANDEX_MOBILE_ADS_TAG, "SDK initialized");
+            }
+        });
+        final AdRequest adRequest = new AdRequest.Builder().build();
+        mBannerAdView =  findViewById(R.id.banner_ad_view);
+        mBannerAdView.setAdUnitId("R-M-1760873-1");
+        mBannerAdView.setAdSize(AdSize.BANNER_320x50);
+        mBannerAdView.loadAd(adRequest);
 
 
     }

@@ -63,8 +63,6 @@ public class Mainboard extends AppCompatActivity {
         mBannerAdView =  findViewById(R.id.banner_ad_view);
         mBannerAdView.setAdUnitId("R-M-1760873-1");
         mBannerAdView.setAdSize(AdSize.BANNER_320x50);
-
-
         mBannerAdView.loadAd(adRequest);
 
     }

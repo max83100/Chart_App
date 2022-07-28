@@ -83,7 +83,7 @@ public class ChartFragment extends Fragment {
         phone.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                intent = new Intent(getActivity(), Test.class);
+                intent = new Intent(getActivity(), Phone.class);
                 startActivity(intent);
             }
         });
