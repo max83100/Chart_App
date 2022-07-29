@@ -83,8 +83,18 @@ public class Phone extends AppCompatActivity  {
         exampleList.add(new PhoneData(R.drawable.meizu, "Meizu", "Количество схем - "+8));
         exampleList.add(new PhoneData(R.drawable.oppo, "OPPO", "Количество схем - "+20));
         exampleList.add(new PhoneData(R.drawable.nokia, "Nokia", "Количество схем - "+73));
-        exampleList.add(new PhoneData(R.drawable.lg, "LG", "Количество схем - "+5));
+        exampleList.add(new PhoneData(R.drawable.lg, "LG", "Количество схем - "+61));
         exampleList.add(new PhoneData(R.drawable.lenovo, "Lenovo", "Количество схем - "+86));
+        exampleList.add(new PhoneData(R.drawable.fly, "Fly", "Количество схем - "+41));
+        exampleList.add(new PhoneData(R.drawable.motorola, "Motorola", "Количество схем - "+50));
+        exampleList.add(new PhoneData(R.drawable.panasonic, "Panasonic", "Количество схем - "+19));
+        exampleList.add(new PhoneData(R.drawable.pantech, "Pantech", "Количество схем - "+15));
+        exampleList.add(new PhoneData(R.drawable.sharp, "Sharp", "Количество схем - "+9));
+        exampleList.add(new PhoneData(R.drawable.siemens, "Siemens", "Количество схем - "+42));
+        exampleList.add(new PhoneData(R.drawable.sony_eric, "Sony Ericsson", "Количество схем - "+15));
+        exampleList.add(new PhoneData(R.drawable.sony, "Sony", "Количество схем - "+2));
+        exampleList.add(new PhoneData(R.drawable.voxtel, "Voxtel", "Количество схем - "+4));
+        exampleList.add(new PhoneData(R.drawable.wexler, "Wexler", "Количество схем - "+4));
 
     }
 
