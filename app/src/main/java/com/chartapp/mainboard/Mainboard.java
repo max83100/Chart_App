@@ -16,6 +16,7 @@ import android.view.MenuItem;
 import android.view.inputmethod.EditorInfo;
 import android.widget.SearchView;
 
+import com.chartapp.CommonData;
 import com.chartapp.R;
 import com.yandex.mobile.ads.banner.AdSize;
 import com.yandex.mobile.ads.banner.BannerAdView;
@@ -30,7 +31,7 @@ import java.util.List;
 
 public class Mainboard extends AppCompatActivity {
     private MainboardAdapter adapter;
-    private List<MainboardData> exampleList;
+    private List<CommonData> exampleList;
 
     BannerAdView mBannerAdView;
     private static final String YANDEX_MOBILE_ADS_TAG = "YandexMobileAds";
@@ -68,12 +69,12 @@ public class Mainboard extends AppCompatActivity {
     }
     private void fillExampleList() throws IOException {
         exampleList = new ArrayList<>();
-        exampleList.add(new MainboardData(R.drawable.apple, "Apple", "Количество схем - "+1));
-        exampleList.add(new MainboardData(R.drawable.asrock, "ASRock", "Количество схем - "+61));
-        exampleList.add(new MainboardData(R.drawable.asus, "Asus", "Количество схем - "+221));
-        exampleList.add(new MainboardData(R.drawable.ecs, "ECS", "Количество схем - "+129));
-        exampleList.add(new MainboardData(R.drawable.foxconn, "Foxconn", "Количество схем - "+34));
-        exampleList.add(new MainboardData(R.drawable.gigabyte, "GIGABYTE", "Количество схем - "+203));
+        exampleList.add(new CommonData(R.drawable.apple, "Apple", "Количество схем - "+1));
+        exampleList.add(new CommonData(R.drawable.asrock, "ASRock", "Количество схем - "+61));
+        exampleList.add(new CommonData(R.drawable.asus, "Asus", "Количество схем - "+221));
+        exampleList.add(new CommonData(R.drawable.ecs, "ECS", "Количество схем - "+129));
+        exampleList.add(new CommonData(R.drawable.foxconn, "Foxconn", "Количество схем - "+34));
+        exampleList.add(new CommonData(R.drawable.gigabyte, "GIGABYTE", "Количество схем - "+203));
 
 
     }
@@ -82,7 +83,7 @@ public class Mainboard extends AppCompatActivity {
         RecyclerView recyclerView = findViewById(R.id.phone_recycler);
         recyclerView.setHasFixedSize(true);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
-        adapter = new MainboardAdapter((ArrayList<MainboardData>) exampleList);
+        adapter = new MainboardAdapter((ArrayList<CommonData>) exampleList);
 
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(adapter);

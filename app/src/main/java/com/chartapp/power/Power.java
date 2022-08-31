@@ -17,8 +17,6 @@ import android.view.inputmethod.EditorInfo;
 import android.widget.SearchView;
 
 import com.chartapp.R;
-import com.chartapp.mainboard.MainboardAdapter;
-import com.chartapp.mainboard.MainboardData;
 import com.yandex.mobile.ads.banner.AdSize;
 import com.yandex.mobile.ads.banner.BannerAdView;
 import com.yandex.mobile.ads.common.AdRequest;

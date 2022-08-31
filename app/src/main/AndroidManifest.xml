@@ -18,6 +18,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ChartApp">
         <activity
+            android:name=".videocard.Videocard"
+            android:exported="false" />
+        <activity
+            android:name=".videocard.Videocard_catalog"
+            android:exported="false" />
+        <activity
             android:name=".Test"
             android:exported="false" />
 

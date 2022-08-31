@@ -13,6 +13,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.chartapp.CommonData;
 import com.chartapp.R;
 
 import java.util.ArrayList;
@@ -21,8 +22,8 @@ import java.util.List;
 
 public class MainboardAdapter extends RecyclerView.Adapter<MainboardAdapter.ViewHolder> implements Filterable {
 
-    private List<MainboardData> exampleList;
-    private List<MainboardData> exampleListFull;
+    private List<CommonData> exampleList;
+    private List<CommonData> exampleListFull;
 
 
     public class ViewHolder extends RecyclerView.ViewHolder {
@@ -38,7 +39,7 @@ public class MainboardAdapter extends RecyclerView.Adapter<MainboardAdapter.View
         }
     }
 
-    public MainboardAdapter(List<MainboardData> exampleList) {
+    public MainboardAdapter(ArrayList<CommonData> exampleList) {
         this.exampleList = exampleList;
         exampleListFull = new ArrayList<>(exampleList);
 
@@ -54,7 +55,7 @@ public class MainboardAdapter extends RecyclerView.Adapter<MainboardAdapter.View
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, @SuppressLint("RecyclerView") int position) {
-        MainboardData currentItem = exampleList.get(position);
+        CommonData currentItem = exampleList.get(position);
 
         holder.imageView.setImageResource(currentItem.getImageView());
         holder.textView1.setText(currentItem.getName());
@@ -110,14 +111,14 @@ public class MainboardAdapter extends RecyclerView.Adapter<MainboardAdapter.View
     private Filter exampleFilter = new Filter() {
         @Override
         protected FilterResults performFiltering(CharSequence constraint) {
-            List<MainboardData> filteredList = new ArrayList<>();
+            List<CommonData> filteredList = new ArrayList<>();
 
             if (constraint == null || constraint.length() == 0) {
                 filteredList.addAll(exampleListFull);
             } else {
                 String filterPattern = constraint.toString().toLowerCase().trim();
 
-                for (MainboardData item : exampleListFull) {
+                for (CommonData item : exampleListFull) {
                     if (item.getName().toLowerCase().contains(filterPattern)) {
                         filteredList.add(item);
                     }
