@@ -79,7 +79,7 @@ public class Mainboard_catalog extends AppCompatActivity {
             recyclerView.setLayoutManager(new LinearLayoutManager(this));
             recyclerView.setAdapter(customAdapter);
         } catch (Exception e) {
-            Toast.makeText(this, "show data"+e.getMessage(), Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "show_data"+e.getMessage(), Toast.LENGTH_SHORT).show();
             e.printStackTrace();
         }
     }
