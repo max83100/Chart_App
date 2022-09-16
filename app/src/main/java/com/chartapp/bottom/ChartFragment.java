@@ -19,6 +19,7 @@ import com.chartapp.laptop.Laptop;
 import com.chartapp.mainboard.Mainboard;
 import com.chartapp.phones.Phone;
 import com.chartapp.power.Power;
+import com.chartapp.videocard.Videocard;
 import com.chartapp.welding.Welding;
 import com.yandex.mobile.ads.banner.AdSize;
 import com.yandex.mobile.ads.banner.BannerAdEventListener;
@@ -40,6 +41,7 @@ public class ChartFragment extends Fragment {
     ImageView phone;
     ImageView welding;
     ImageView power;
+    ImageView videocard;
 
 
 
@@ -68,6 +70,7 @@ public class ChartFragment extends Fragment {
         phone = view.findViewById(R.id.phoneView);
         welding = view.findViewById(R.id.weldingView);
         power = view.findViewById(R.id.powersupView);
+        videocard = view.findViewById(R.id.videocardView);
 
 
         preload();
@@ -114,6 +117,13 @@ public class ChartFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 intent = new Intent(getActivity(), Power.class);
+                startActivity(intent);
+            }
+        });
+        videocard.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                intent = new Intent(getActivity(), Videocard.class);
                 startActivity(intent);
             }
         });
