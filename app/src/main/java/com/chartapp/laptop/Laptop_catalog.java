@@ -45,8 +45,8 @@ public class Laptop_catalog extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         Bundle extras = getIntent().getExtras();
         data = extras.getString("testNameData");
-        setContentView(R.layout.activity_xiaomi_catalog);
-        recyclerView = findViewById(R.id.xiaomiView);
+        setContentView(R.layout.activity_recycler);
+        recyclerView = findViewById(R.id.recyclerView);
         myDB = new Laptop_helper(this);
         Laptop_helper.tab_name = data;
         setTitle(data);

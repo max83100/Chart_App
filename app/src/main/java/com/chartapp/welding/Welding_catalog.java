@@ -21,7 +21,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.chartapp.Adapter;
 import com.chartapp.Data;
 import com.chartapp.R;
-import com.chartapp.phones.Phone_helper;
 import com.yandex.mobile.ads.banner.AdSize;
 import com.yandex.mobile.ads.banner.BannerAdView;
 import com.yandex.mobile.ads.common.AdRequest;
@@ -46,8 +45,8 @@ public class Welding_catalog extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         Bundle extras = getIntent().getExtras();
         data = extras.getString("testNameData");
-        setContentView(R.layout.activity_xiaomi_catalog);
-        recyclerView = findViewById(R.id.xiaomiView);
+        setContentView(R.layout.activity_recycler);
+        recyclerView = findViewById(R.id.recyclerView);
         myDB = new Welding_helper(this);
         Welding_helper.tab_name = data;
         setTitle(data);

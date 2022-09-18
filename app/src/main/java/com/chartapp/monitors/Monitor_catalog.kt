@@ -1,36 +1,38 @@
-package com.chartapp.phones
+package com.chartapp.monitors
 
-import android.graphics.drawable.ColorDrawable
+import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.RecyclerView
+import com.yandex.mobile.ads.banner.BannerAdView
+import android.annotation.SuppressLint
 import android.os.Bundle
+import com.chartapp.R
+import android.graphics.drawable.ColorDrawable
 import android.util.Log
 import android.view.Menu
+import androidx.core.content.ContextCompat
+import androidx.recyclerview.widget.LinearLayoutManager
+import android.widget.Toast
 import android.view.View
 import android.view.inputmethod.EditorInfo
 import android.widget.SearchView
-import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
-import androidx.core.content.ContextCompat
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.chartapp.Adapter
 import com.chartapp.Data
-import com.chartapp.R
+import com.chartapp.phones.Phone_catalog
 import com.yandex.mobile.ads.banner.AdSize
-import com.yandex.mobile.ads.banner.BannerAdView
 import com.yandex.mobile.ads.common.AdRequest
 import com.yandex.mobile.ads.common.MobileAds
+import java.lang.Exception
+import java.util.ArrayList
 
-class Phone_catalog : AppCompatActivity() {
-
+class Monitor_catalog : AppCompatActivity() {
     var data: String? = null
-    var myDB: Phone_helper? = null
+    var myDB: Monitor_helper? = null
     var list: ArrayList<Data>? = null
     var customAdapter: Adapter? = null
     var recyclerView: RecyclerView? = null
-    lateinit var mBannerAdView: BannerAdView
-
-
+   lateinit var mBannerAdView: BannerAdView
+    @SuppressLint("ResourceAsColor")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val extras = intent.extras
@@ -38,16 +40,13 @@ class Phone_catalog : AppCompatActivity() {
         setContentView(R.layout.activity_recycler)
 
         recyclerView = findViewById(R.id.recyclerView)
-        myDB = Phone_helper(this)
-        Phone_helper.tab_name = data
+        myDB = Monitor_helper(this)
+        Monitor_helper.tab_name = data
         title = data
         list = ArrayList()
         showData(recyclerView)
-
-
         ads()
         setUpToolbar()
-
     }
 
     fun showData(view: View?) {
@@ -58,7 +57,7 @@ class Phone_catalog : AppCompatActivity() {
             recyclerView!!.layoutManager = LinearLayoutManager(this)
             recyclerView!!.adapter = customAdapter
         } catch (e: Exception) {
-            Toast.makeText(this, "show data" + e.message, Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "show_data" + e.message, Toast.LENGTH_SHORT).show()
             e.printStackTrace()
         }
     }
@@ -73,6 +72,7 @@ class Phone_catalog : AppCompatActivity() {
             override fun onQueryTextSubmit(query: String): Boolean {
                 return false
             }
+
             override fun onQueryTextChange(newText: String): Boolean {
                 customAdapter!!.filter.filter(newText)
                 return false
@@ -80,24 +80,22 @@ class Phone_catalog : AppCompatActivity() {
         })
         return true
     }
-
-
     fun ads(){
-        MobileAds.initialize(this) { Log.d(YANDEX_MOBILE_ADS_TAG, "SDK initialized") }
+        MobileAds.initialize(this) { Log.d(Phone_catalog.YANDEX_MOBILE_ADS_TAG, "SDK initialized") }
         val adRequest = AdRequest.Builder().build()
         mBannerAdView = findViewById(R.id.banner_ad_view)
         mBannerAdView.setAdUnitId("R-M-1760873-1")
         mBannerAdView.setAdSize(AdSize.BANNER_320x50)
         mBannerAdView.loadAd(adRequest)
     }
-   fun setUpToolbar(){
-       val toolbar = findViewById<Toolbar>(R.id.toolbar_phone)
-       setSupportActionBar(toolbar)
-       toolbar.setBackgroundDrawable(ColorDrawable(resources.getColor(R.color.toolbar)))
-       window.statusBarColor = ContextCompat.getColor(this, R.color.toolbar)
+    fun setUpToolbar(){
+        val toolbar = findViewById<Toolbar>(R.id.toolbar_phone)
+        setSupportActionBar(toolbar)
+        toolbar.setBackgroundDrawable(ColorDrawable(resources.getColor(R.color.toolbar)))
+        window.statusBarColor = ContextCompat.getColor(this, R.color.toolbar)
     }
 
     companion object {
-        const val YANDEX_MOBILE_ADS_TAG = "YandexMobileAds"
+        private const val YANDEX_MOBILE_ADS_TAG = "YandexMobileAds"
     }
 }
