@@ -29,7 +29,6 @@
                 tools:ignore="MissingConstraints" />
 
 
-
             <ImageView
                 android:id="@+id/phoneView"
                 android:layout_width="match_parent"
@@ -113,6 +112,40 @@
                 android:layout_marginBottom="20dp"
                 android:gravity="center"
                 android:text="Блоки питания"
+                android:textColor="#101010"
+                android:textSize="24sp" />
+
+            <ImageView
+                android:id="@+id/videocardView"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:onClick="onClick"
+                app:srcCompat="@drawable/videocard" />
+
+            <TextView
+                android:id="@+id/videocardtext"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:gravity="center"
+                android:text="Видеокарты"
+                android:textColor="#101010"
+                android:textSize="24sp" />
+
+            <ImageView
+                android:id="@+id/monitorView"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:onClick="onClick"
+                app:srcCompat="@drawable/monitor" />
+
+            <TextView
+                android:id="@+id/monitortext"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:gravity="center"
+                android:text="Мониторы"
                 android:textColor="#101010"
                 android:textSize="24sp" />
         </LinearLayout>
