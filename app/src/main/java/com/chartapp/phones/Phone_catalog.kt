@@ -53,7 +53,7 @@ class Phone_catalog : AppCompatActivity() {
     fun showData(view: View?) {
         try {
             list = myDB!!.allData
-            customAdapter = Adapter(list)
+            customAdapter = list?.let { Adapter(it) }
             recyclerView!!.hasFixedSize()
             recyclerView!!.layoutManager = LinearLayoutManager(this)
             recyclerView!!.adapter = customAdapter

@@ -83,7 +83,7 @@ class Phone : AppCompatActivity() {
         val recyclerView = findViewById<RecyclerView>(R.id.phone_recycler)
         recyclerView.setHasFixedSize(true)
         val layoutManager: RecyclerView.LayoutManager = LinearLayoutManager(this)
-        adapter = PhoneAdapter(exampleList)
+        adapter = exampleList?.let { PhoneAdapter(it) }
         recyclerView.layoutManager = layoutManager
         recyclerView.adapter = adapter
     }

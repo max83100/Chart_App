@@ -1,33 +1,28 @@
-package com.chartapp.monitors
+package com.chartapp.phones
 
 import android.content.Context
-import com.readystatesoftware.sqliteasset.SQLiteAssetHelper
-import com.chartapp.monitors.Monitor_helper
-import android.database.sqlite.SQLiteDatabase
-import android.widget.Toast
 import android.database.sqlite.SQLiteQueryBuilder
+import android.widget.Toast
 import com.chartapp.Data
-import java.lang.Exception
-import java.util.ArrayList
+import com.readystatesoftware.sqliteasset.SQLiteAssetHelper
 
-class Monitor_helper(var context: Context) : SQLiteAssetHelper(
+class Phone_helper(var context: Context) : SQLiteAssetHelper(
     context, DATABASE_NAME, null, DATABASE_VERSION
 ) {
     companion object {
         var tab_name: String? = null
-        private const val DATABASE_NAME = "motherboard.db"
-        private const val DATABASE_VERSION = 1
+        private const val DATABASE_NAME = "phones.db"
+        private const val DATABASE_VERSION = 2
     }
 
     init {
-        setForcedUpgrade(1)
+        setForcedUpgrade(2)
     }
 
     val allData: ArrayList<Data>?
         get() = try {
             val list = ArrayList<Data>()
             val sqLiteDatabase = writableDatabase
-
             if (sqLiteDatabase != null) {
                 val cursor = sqLiteDatabase.rawQuery("select * from " + tab_name, null)
                 if (cursor.count != 0) {
@@ -39,13 +34,12 @@ class Monitor_helper(var context: Context) : SQLiteAssetHelper(
                         list.add(Data(name, ref, other))
                     }
                     list
-
                 } else {
                     Toast.makeText(context, "No data retired", Toast.LENGTH_SHORT).show()
                     null
                 }
             } else {
-                Toast.makeText(context, "db_data is null", Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, "Motherboard_data is null", Toast.LENGTH_SHORT).show()
                 null
             }
         } catch (e: Exception) {
@@ -72,8 +66,6 @@ class Monitor_helper(var context: Context) : SQLiteAssetHelper(
             c.close()
             return v
         }
-
-
 
 
 }
