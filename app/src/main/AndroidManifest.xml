@@ -21,10 +21,15 @@
             android:name=".videocard.Videocard"
             android:exported="false" />
         <activity
-            android:name=".videocard.Videocard_catalog"
-            android:exported="false" />
+            android:name=".monitors.Monitor"
+            android:exported="false"
+            tools:ignore="Instantiatable" />
         <activity
-            android:name=".Test"
+            android:name=".monitors.Monitor_catalog"
+            android:exported="false" />
+
+        <activity
+            android:name=".videocard.Videocard_catalog"
             android:exported="false" />
 
         <meta-data
@@ -84,10 +89,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".MainActivity"
-            android:exported="true"
-            android:label="Главное меню" />
         <activity
             android:name=".bottom.Bottom"
             android:exported="false" />

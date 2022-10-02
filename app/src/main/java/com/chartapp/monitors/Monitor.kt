@@ -46,12 +46,22 @@ class Monitor : AppCompatActivity() {
     @Throws(IOException::class)
     private fun fillExampleList() {
         exampleList = ArrayList()
-        (exampleList as ArrayList<CommonData>).add(CommonData(R.drawable.apple, "Apple", "Количество схем - " + 1))
-        (exampleList as ArrayList<CommonData>).add(CommonData(R.drawable.asrock, "ASRock", "Количество схем - " + 61))
-        (exampleList as ArrayList<CommonData>).add(CommonData(R.drawable.asus, "Asus", "Количество схем - " + 221))
-        (exampleList as ArrayList<CommonData>).add(CommonData(R.drawable.ecs, "ECS", "Количество схем - " + 129))
-        (exampleList as ArrayList<CommonData>).add(CommonData(R.drawable.foxconn, "Foxconn", "Количество схем - " + 34))
-        (exampleList as ArrayList<CommonData>).add(CommonData(R.drawable.gigabyte, "GIGABYTE", "Количество схем - " + 203))
+        (exampleList as ArrayList<CommonData>).add(CommonData(R.drawable.acer, "Acer", "Количество схем - " + 76))
+        (exampleList as ArrayList<CommonData>).add(CommonData(R.drawable.aoc, "AOC", "Количество схем - " + 22))
+        (exampleList as ArrayList<CommonData>).add(CommonData(R.drawable.belinea, "Belinea", "Количество схем - " + 6))
+        (exampleList as ArrayList<CommonData>).add(CommonData(R.drawable.benq, "Benq", "Количество схем - " + 1))
+        (exampleList as ArrayList<CommonData>).add(CommonData(R.drawable.compaq, "Compaq", "Количество схем - " + 1))
+        (exampleList as ArrayList<CommonData>).add(CommonData(R.drawable.ctx, "CTX", "Количество схем - " + 6))
+        (exampleList as ArrayList<CommonData>).add(CommonData(R.drawable.daewoo, "Daewoo", "Количество схем - " + 10))
+        (exampleList as ArrayList<CommonData>).add(CommonData(R.drawable.dell, "Dell", "Количество схем - " + 5))
+        (exampleList as ArrayList<CommonData>).add(CommonData(R.drawable.hansol, "Hansol", "Количество схем - " + 2))
+        (exampleList as ArrayList<CommonData>).add(CommonData(R.drawable.hyndai, "Hyndai", "Количество схем - " + 4))
+        (exampleList as ArrayList<CommonData>).add(CommonData(R.drawable.iiyama, "Iiyama", "Количество схем - " + 4))
+        (exampleList as ArrayList<CommonData>).add(CommonData(R.drawable.lg, "LG", "Количество схем - " + 62))
+        (exampleList as ArrayList<CommonData>).add(CommonData(R.drawable.mag, "Mag", "Количество схем - " + 4))
+        (exampleList as ArrayList<CommonData>).add(CommonData(R.drawable.philips, "Philips", "Количество схем - " + 2))
+        (exampleList as ArrayList<CommonData>).add(CommonData(R.drawable.samsung, "Samsung", "Количество схем - " + 13))
+
     }
 
     private fun setUpRecyclerView() {
@@ -99,6 +109,6 @@ class Monitor : AppCompatActivity() {
     }
 
     companion object {
-        private const val YANDEX_MOBILE_ADS_TAG = "YandexMobileAds"
+        const val YANDEX_MOBILE_ADS_TAG = "YandexMobileAds"
     }
 }

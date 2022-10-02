@@ -53,14 +53,23 @@ class Monitor_adapter(exampleList: ArrayList<CommonData>) :
         holder.textView1.text = currentItem.name
         holder.textView2.text = currentItem.count
         holder.itemView.setOnClickListener { v ->
-            val intent = Intent(v.context, Mainboard_catalog::class.java)
+            val intent = Intent(v.context, Monitor_catalog::class.java)
             when (position) {
-                0 -> intent.putExtra("testNameData", "apple")
-                1 -> intent.putExtra("testNameData", "asrock")
-                2 -> intent.putExtra("testNameData", "asus")
-                3 -> intent.putExtra("testNameData", "ecs")
-                4 -> intent.putExtra("testNameData", "foxconn")
-                5 -> intent.putExtra("testNameData", "gigabyte")
+                0 -> intent.putExtra("testNameData", "acer")
+                1 -> intent.putExtra("testNameData", "aoc")
+                2 -> intent.putExtra("testNameData", "belinea")
+                3 -> intent.putExtra("testNameData", "benq")
+                4 -> intent.putExtra("testNameData", "compaq")
+                5 -> intent.putExtra("testNameData", "ctx")
+                6 -> intent.putExtra("testNameData", "daewoo")
+                7 -> intent.putExtra("testNameData", "dell")
+                8 -> intent.putExtra("testNameData", "hansol")
+                9 -> intent.putExtra("testNameData", "hyndai")
+                10 -> intent.putExtra("testNameData", "iiyama")
+                11 -> intent.putExtra("testNameData", "lg")
+                12 -> intent.putExtra("testNameData", "mag")
+                13 -> intent.putExtra("testNameData", "philips")
+                14 -> intent.putExtra("testNameData", "samsung")
             }
             v.context.startActivity(intent)
         }

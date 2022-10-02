@@ -1,36 +1,22 @@
 package com.chartapp.bottom;
 
 import android.content.Intent;
-import android.media.Image;
 import android.os.Bundle;
-
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
+import androidx.fragment.app.Fragment;
+
 import com.chartapp.R;
-import com.chartapp.Test;
 import com.chartapp.laptop.Laptop;
 import com.chartapp.mainboard.Mainboard;
+import com.chartapp.monitors.Monitor;
 import com.chartapp.phones.Phone;
 import com.chartapp.power.Power;
 import com.chartapp.videocard.Videocard;
 import com.chartapp.welding.Welding;
-import com.yandex.mobile.ads.banner.AdSize;
-import com.yandex.mobile.ads.banner.BannerAdEventListener;
-import com.yandex.mobile.ads.banner.BannerAdView;
-import com.yandex.mobile.ads.common.AdRequest;
-import com.yandex.mobile.ads.common.AdRequestError;
-import com.yandex.mobile.ads.common.ImpressionData;
-import com.yandex.mobile.ads.common.InitializationListener;
-import com.yandex.mobile.ads.common.MobileAds;
-
-import java.util.Objects;
 
 public class ChartFragment extends Fragment {
     private static final String TAG = "MyActivity";
@@ -42,6 +28,7 @@ public class ChartFragment extends Fragment {
     ImageView welding;
     ImageView power;
     ImageView videocard;
+    ImageView monitor;
 
 
 
@@ -71,6 +58,7 @@ public class ChartFragment extends Fragment {
         welding = view.findViewById(R.id.weldingView);
         power = view.findViewById(R.id.powersupView);
         videocard = view.findViewById(R.id.videocardView);
+        monitor = view.findViewById(R.id.monitorView);
 
 
         preload();
@@ -125,6 +113,12 @@ public class ChartFragment extends Fragment {
             public void onClick(View v) {
                 intent = new Intent(getActivity(), Videocard.class);
                 startActivity(intent);
+            }
+        });
+        monitor.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getActivity().getApplicationContext(), Monitor.class));
             }
         });
 

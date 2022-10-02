@@ -15,7 +15,7 @@ class Monitor_helper(var context: Context) : SQLiteAssetHelper(
 ) {
     companion object {
         var tab_name: String? = null
-        private const val DATABASE_NAME = "motherboard.db"
+        private const val DATABASE_NAME = "monitors.db"
         private const val DATABASE_VERSION = 1
     }
 
