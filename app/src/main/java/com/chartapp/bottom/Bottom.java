@@ -24,7 +24,9 @@ import com.google.firebase.messaging.FirebaseMessaging;
 
 public class Bottom extends AppCompatActivity  {
 
-    Intent intent;
+
+    Toolbar toolbar;
+    BottomNavigationView bottom_nav;
     private static final String TAG = "MyActivity";
 
 
@@ -39,11 +41,11 @@ public class Bottom extends AppCompatActivity  {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bottom2);
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
-        BottomNavigationView bottom_nav = findViewById(R.id.bottomNavView);
+        bottom_nav = findViewById(R.id.bottomNavView);
         bottom_nav.setOnNavigationItemSelectedListener(navListener);
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.fragment_layout,new ChartFragment()).commit();
-        Toolbar toolbar = findViewById(R.id.toolbar_main);
+        toolbar = findViewById(R.id.toolbar_main);
         setSupportActionBar(toolbar);
         toolbar.setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.toolbar)));
         getWindow().setStatusBarColor(ContextCompat.getColor(this,R.color.toolbar));
@@ -93,5 +95,10 @@ public void fcm(){
             });
 }
 
-
+    @Override
+    protected void onDestroy() {
+        toolbar = null;
+        bottom_nav = null;
+        super.onDestroy();
+    }
 }

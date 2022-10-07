@@ -1,6 +1,7 @@
 package com.chartapp.laptop
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.util.Log
@@ -14,6 +15,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.chartapp.CommonData
 import com.chartapp.R
+import com.chartapp.bottom.Bottom
 import com.chartapp.monitors.Monitor
 import com.yandex.mobile.ads.banner.AdSize
 import com.yandex.mobile.ads.banner.BannerAdView
@@ -25,20 +27,18 @@ class Laptop : AppCompatActivity() {
     private var adapter: LaptopAdapter? = null
     private var exampleList: MutableList<CommonData>? = null
     lateinit var mBannerAdView: BannerAdView
+    lateinit var toolbar: Toolbar
+    val adRequest = AdRequest.Builder().build()
     @SuppressLint("ResourceAsColor")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_phone)
         try {
             fillExampleList()
-        } catch (e: IOException) {
-            e.printStackTrace()
-        }
-        try {
             setUpRecyclerView()
             setUpToolbar()
             ads()
-        } catch (e: ClassNotFoundException) {
+        } catch (e: Exception) {
             e.printStackTrace()
         }
 
@@ -99,7 +99,7 @@ class Laptop : AppCompatActivity() {
     }
 
     fun setUpToolbar(){
-        val toolbar = findViewById<Toolbar>(R.id.toolbar_phone)
+        toolbar = findViewById(R.id.toolbar_phone)
         setSupportActionBar(toolbar)
         toolbar.setBackgroundDrawable(ColorDrawable(resources.getColor(R.color.toolbar)))
         window.statusBarColor = ContextCompat.getColor(this, R.color.toolbar)
@@ -107,14 +107,29 @@ class Laptop : AppCompatActivity() {
 
     private fun ads() {
         MobileAds.initialize(this) { Log.d(Monitor.YANDEX_MOBILE_ADS_TAG, "SDK initialized") }
-        val adRequest = AdRequest.Builder().build()
         mBannerAdView = findViewById(R.id.banner_ad_view)
         mBannerAdView.setAdUnitId("R-M-1760873-1")
         mBannerAdView.setAdSize(AdSize.BANNER_320x50)
         mBannerAdView.loadAd(adRequest)
     }
 
-    companion object {
-        private const val YANDEX_MOBILE_ADS_TAG = "YandexMobileAds"
+    override fun onResume() {
+        val run = Thread {
+            while (true) {
+                try {
+                    mBannerAdView.loadAd(adRequest)
+                    Thread.sleep(8000)
+                } catch (ex: InterruptedException) {
+                }
+            }
+        }
+        run.start()
+        super.onResume()
+    }
+
+    override fun onDestroy() {
+        adapter = null
+        exampleList= null
+        super.onDestroy()
     }
 }

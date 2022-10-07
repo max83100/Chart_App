@@ -1,6 +1,5 @@
 package com.chartapp.laptop
 
-import android.annotation.SuppressLint
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.util.Log
@@ -31,6 +30,7 @@ class Laptop_catalog : AppCompatActivity() {
     var customAdapter: Adapter? = null
     var recyclerView: RecyclerView? = null
     lateinit var mBannerAdView: BannerAdView
+    val adRequest = AdRequest.Builder().build()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -88,14 +88,33 @@ class Laptop_catalog : AppCompatActivity() {
 
     private fun ads() {
         MobileAds.initialize(this) { Log.d(Monitor.YANDEX_MOBILE_ADS_TAG, "SDK initialized") }
-        val adRequest = AdRequest.Builder().build()
         mBannerAdView = findViewById(R.id.banner_ad_view)
         mBannerAdView.setAdUnitId("R-M-1760873-1")
         mBannerAdView.setAdSize(AdSize.BANNER_320x50)
         mBannerAdView.loadAd(adRequest)
     }
 
-    companion object {
-        private const val YANDEX_MOBILE_ADS_TAG = "YandexMobileAds"
+    override fun onResume() {
+        val run = Thread {
+            while (true) {
+                try {
+                    mBannerAdView.loadAd(adRequest)
+                    Thread.sleep(8000)
+                } catch (ex: InterruptedException) {
+                }
+            }
+        }
+        run.start()
+        super.onResume()
     }
+
+    override fun onDestroy() {
+         data = null
+         myDB = null
+         list= null
+         customAdapter = null
+         recyclerView= null
+        super.onDestroy()
+    }
+
 }
