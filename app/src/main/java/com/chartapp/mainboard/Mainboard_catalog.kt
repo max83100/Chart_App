@@ -34,6 +34,7 @@ class Mainboard_catalog : AppCompatActivity() {
     var customAdapter: Adapter? = null
     var recyclerView: RecyclerView? = null
     lateinit var mBannerAdView: BannerAdView
+
     @SuppressLint("ResourceAsColor")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -82,7 +83,7 @@ class Mainboard_catalog : AppCompatActivity() {
         return true
     }
 
-    fun setUpToolbar(){
+    fun setUpToolbar() {
         val toolbar = findViewById<Toolbar>(R.id.toolbar_phone)
         setSupportActionBar(toolbar)
         toolbar.setBackgroundDrawable(ColorDrawable(resources.getColor(R.color.toolbar)))
@@ -98,7 +99,12 @@ class Mainboard_catalog : AppCompatActivity() {
         mBannerAdView.loadAd(adRequest)
     }
 
-    companion object {
-        private const val YANDEX_MOBILE_ADS_TAG = "YandexMobileAds"
+    override fun onDestroy() {
+        data = null
+        myDB = null
+        list = null
+        customAdapter = null
+        recyclerView = null
+        super.onDestroy()
     }
 }
