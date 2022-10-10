@@ -98,7 +98,12 @@ class Videocard_catalog : AppCompatActivity() {
         mBannerAdView.loadAd(adRequest)
     }
 
-    companion object {
-        private const val YANDEX_MOBILE_ADS_TAG = "YandexMobileAds"
+    override fun onDestroy() {
+        data = null
+        myDB = null
+        list = null
+        customAdapter = null
+        recyclerView = null
+        super.onDestroy()
     }
 }

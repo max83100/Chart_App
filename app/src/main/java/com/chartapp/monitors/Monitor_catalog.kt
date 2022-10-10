@@ -81,7 +81,7 @@ class Monitor_catalog : AppCompatActivity() {
         return true
     }
     fun ads(){
-        MobileAds.initialize(this) { Log.d(Phone_catalog.YANDEX_MOBILE_ADS_TAG, "SDK initialized") }
+        MobileAds.initialize(this) { Log.d(Monitor.YANDEX_MOBILE_ADS_TAG, "SDK initialized") }
         val adRequest = AdRequest.Builder().build()
         mBannerAdView = findViewById(R.id.banner_ad_view)
         mBannerAdView.setAdUnitId("R-M-1760873-1")
@@ -95,7 +95,12 @@ class Monitor_catalog : AppCompatActivity() {
         window.statusBarColor = ContextCompat.getColor(this, R.color.toolbar)
     }
 
-    companion object {
-        private const val YANDEX_MOBILE_ADS_TAG = "YandexMobileAds"
+    override fun onDestroy() {
+        data = null
+        myDB = null
+        list = null
+        customAdapter = null
+        recyclerView = null
+        super.onDestroy()
     }
 }

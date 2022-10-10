@@ -1,7 +1,6 @@
 package com.chartapp.mainboard
 
 import androidx.appcompat.app.AppCompatActivity
-import com.chartapp.mainboard.MainboardAdapter
 import com.chartapp.CommonData
 import com.yandex.mobile.ads.banner.BannerAdView
 import android.annotation.SuppressLint
@@ -11,12 +10,9 @@ import android.graphics.drawable.ColorDrawable
 import android.util.Log
 import android.view.Menu
 import androidx.core.content.ContextCompat
-import com.yandex.mobile.ads.common.InitializationListener
-import com.chartapp.mainboard.Mainboard
 import kotlin.Throws
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.LinearLayoutManager
-import android.view.MenuInflater
 import android.view.inputmethod.EditorInfo
 import android.widget.SearchView
 import androidx.appcompat.widget.Toolbar
@@ -102,7 +98,9 @@ class Mainboard : AppCompatActivity() {
         mBannerAdView.loadAd(adRequest)
     }
 
-    companion object {
-        private const val YANDEX_MOBILE_ADS_TAG = "YandexMobileAds"
+    override fun onDestroy() {
+        adapter = null
+        exampleList= null
+        super.onDestroy()
     }
 }

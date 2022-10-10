@@ -1,6 +1,5 @@
 package com.chartapp.videocard
 
-import android.annotation.SuppressLint
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.util.Log
@@ -101,5 +100,10 @@ class Videocard : AppCompatActivity() {
 
     companion object {
         private const val YANDEX_MOBILE_ADS_TAG = "YandexMobileAds"
+    }
+    override fun onDestroy() {
+        adapter = null
+        exampleList= null
+        super.onDestroy()
     }
 }

@@ -1,7 +1,6 @@
 package com.chartapp.laptop
 
 import android.annotation.SuppressLint
-import android.content.Intent
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.util.Log
@@ -15,7 +14,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.chartapp.CommonData
 import com.chartapp.R
-import com.chartapp.bottom.Bottom
 import com.chartapp.monitors.Monitor
 import com.yandex.mobile.ads.banner.AdSize
 import com.yandex.mobile.ads.banner.BannerAdView
@@ -43,6 +41,7 @@ class Laptop : AppCompatActivity() {
         }
 
     }
+
 
     @Throws(IOException::class)
     private fun fillExampleList() {
@@ -113,23 +112,14 @@ class Laptop : AppCompatActivity() {
         mBannerAdView.loadAd(adRequest)
     }
 
-    override fun onResume() {
-        val run = Thread {
-            while (true) {
-                try {
-                    mBannerAdView.loadAd(adRequest)
-                    Thread.sleep(8000)
-                } catch (ex: InterruptedException) {
-                }
-            }
-        }
-        run.start()
-        super.onResume()
-    }
+
 
     override fun onDestroy() {
         adapter = null
         exampleList= null
         super.onDestroy()
     }
+
 }
+
+

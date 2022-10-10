@@ -111,4 +111,9 @@ class Monitor : AppCompatActivity() {
     companion object {
         const val YANDEX_MOBILE_ADS_TAG = "YandexMobileAds"
     }
+    override fun onDestroy() {
+        adapter = null
+        exampleList= null
+        super.onDestroy()
+    }
 }

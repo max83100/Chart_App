@@ -94,19 +94,7 @@ class Laptop_catalog : AppCompatActivity() {
         mBannerAdView.loadAd(adRequest)
     }
 
-    override fun onResume() {
-        val run = Thread {
-            while (true) {
-                try {
-                    mBannerAdView.loadAd(adRequest)
-                    Thread.sleep(8000)
-                } catch (ex: InterruptedException) {
-                }
-            }
-        }
-        run.start()
-        super.onResume()
-    }
+
 
     override fun onDestroy() {
          data = null

@@ -14,7 +14,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.chartapp.CommonData
 import com.chartapp.R
 import com.chartapp.monitors.Monitor
-import com.chartapp.phones.PhoneAdapter
 import com.yandex.mobile.ads.banner.AdSize
 import com.yandex.mobile.ads.banner.BannerAdView
 import com.yandex.mobile.ads.common.AdRequest
@@ -149,5 +148,10 @@ class Welding : AppCompatActivity() {
 
     companion object {
         private const val YANDEX_MOBILE_ADS_TAG = "YandexMobileAds"
+    }
+    override fun onDestroy() {
+        adapter = null
+        exampleList= null
+        super.onDestroy()
     }
 }
